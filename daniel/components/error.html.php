@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<?php require $root . "/requires/helpers.php";  ?>
+<?php require $root . "/includes/helpers.inc.php";  ?>
     <span> <?php htmlout($output); ?> </span>
 
 </body>

@@ -2,7 +2,7 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'] . "/daniel";
 
-require $root . "/requires/db.inc.php";
+include_once $root . "/includes/db.inc.php";
 
 try {
   $sql = 'SELECT joketext, jokedate, name, email
@@ -14,7 +14,7 @@ try {
 }
 catch (PDOException $e) {
   $output = 'Error fetching current jokes: ' . $e->getMessage();
-  require $root . '/components/error.html.php';
+  include_once $root . '/components/error.html.php';
   exit();
 }
 
@@ -22,7 +22,7 @@ $date = date('Y-m');
  
 if ($result->rowCount() == 0) {
   $output = "Error no current jokes found for $date.";
-  require $root . '/components/error.html.php';
+  include_once $root . '/components/error.html.php';
   exit();
 }
 
@@ -37,7 +37,7 @@ while ($row = $result->fetch()) {
   );
 }
 
-require $root . "/components/current-jokes.html.php";
+include_once $root . "/components/current-jokes.html.php";
 
 exit();
 

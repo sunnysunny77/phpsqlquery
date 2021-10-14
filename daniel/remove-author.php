@@ -2,13 +2,13 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'] . "/daniel";
 
-require $root . "/requires/db.inc.php";
+include_once $root . "/includes/db.inc.php";
 
 if (isset($_POST['action']) && $_POST['action'] == 'Remove Author') {
 
   if ($_POST['id'] == '') {
     $output  = 'You must choose an author. Click &lsquo;back&rsquo; and try again.';
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
 
@@ -19,7 +19,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Remove Author') {
     $result->execute();
   } catch (PDOException $e) {
     $output = 'Error deleting author role: ' . $e->getMessage();
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
 
@@ -30,7 +30,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Remove Author') {
     $result->execute();
   } catch (PDOException $e) {
     $output = 'Error fetching list of jokes to delete: ' . $e->getMessage();
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
 
@@ -46,7 +46,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Remove Author') {
     }
   } catch (PDOException $e) {
     $output = 'Error deleting category entries for joke: ' . $e->getMessage();
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
 
@@ -57,7 +57,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Remove Author') {
     $result->execute();
   } catch (PDOException $e) {
     $output = 'Error deleting jokes for author: ' . $e->getMessage();
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
 
@@ -68,7 +68,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Remove Author') {
     $s->execute();
   } catch (PDOException $e) {
     $output = 'Error deleting author: ' . $e->getMessage();
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
  
@@ -85,13 +85,13 @@ try {
   $result = $pdo->query($sql);
 } catch (PDOException $e) {
   $output = 'Error fetching authors: ' . $e->getMessage();
-  require $root . '/components/error.html.php';
+  include_once $root . '/components/error.html.php';
   exit();
 }
 
 if ($result->rowCount() == 0) {
   $output = "Error no authors found.";
-  require $root . '/components/error.html.php';
+  include_once $root . '/components/error.html.php';
   exit();
 }
 
@@ -102,7 +102,7 @@ while ($row = $result->fetch()) {
   );
 }
 
-require $root . "/components/remove-author.html.php";
+include_once $root . "/components/remove-author.html.php";
 
 exit();
 

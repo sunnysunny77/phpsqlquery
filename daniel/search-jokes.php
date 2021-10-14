@@ -2,7 +2,7 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'] . "/daniel";
 
-require $root . "/requires/db.inc.php";
+include_once $root . "/includes/db.inc.php";
 
 if (isset($_POST['action']) && $_POST['action'] == 'Search Jokes') {
 
@@ -15,13 +15,13 @@ if (isset($_POST['action']) && $_POST['action'] == 'Search Jokes') {
     $result->execute();
   } catch (PDOException $e) {
     $output = 'Error fetching jokes: ' . $e->getMessage();
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
 
   if ($result->rowCount() == 0) {
     $output = "Error no jokes found.";
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
   
@@ -38,7 +38,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Search Jokes') {
 
 }
 
-require $root . "/components/search-jokes.html.php";
+include_once $root . "/components/search-jokes.html.php";
 
 exit();
 

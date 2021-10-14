@@ -2,7 +2,7 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'] . "/daniel";
 
-require $root . "/requires/db.inc.php";
+include_once $root . "/includes/db.inc.php";
 
 if (isset($_POST['action']) && $_POST['action'] == 'Update Date') {
   
@@ -16,7 +16,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'Update Date') {
 
   catch (PDOException $e) {
     $output = 'Error updating joke date.' . $e->getMessage();
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
 
@@ -35,13 +35,13 @@ try {
 }
 catch (PDOException $e) {
   $output = 'Error fetching list of dates:' . $e->getMessage();
-  require $root . '/components/error.html.php';
+  include_once $root . '/components/error.html.php';
   exit();
 }
 
 if ($result->rowCount() == 0) {
   $output = "Error no dates found.";
-  require $root . '/components/error.html.php';
+  include_once $root . '/components/error.html.php';
   exit();
 }
 
@@ -56,7 +56,7 @@ while ($row = $result->fetch()) {
   );
 }
 
-require $root . "/components/update-date.html.php";
+include_once $root . "/components/update-date.html.php";
 
 exit();
 

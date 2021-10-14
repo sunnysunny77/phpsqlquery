@@ -33,7 +33,7 @@
 
     <?php
 
-    require $root . "/requires/helpers.php";
+    require $root . "/includes/helpers.inc.php";
 
     echo "<p>Here are all the jokes from the database:</p>";
 

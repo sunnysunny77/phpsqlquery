@@ -33,7 +33,7 @@
 
     <?php
 
-    require $root . "/requires/helpers.php";
+    require $root . "/includes/helpers.inc.php";
 
     foreach ($jokes as $joke) {
         echo "<blockquote>";

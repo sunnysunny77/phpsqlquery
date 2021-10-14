@@ -2,7 +2,7 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'] . "/daniel";
 
-require $root . "/requires/db.inc.php";
+include_once $root . "/includes/db.inc.php";
 
 try {
   $sql = 'SELECT joketext, jokedate, name, email
@@ -13,13 +13,13 @@ try {
 }
 catch (PDOException $e) {
   $output = 'Error fetching jokes: ' . $e->getMessage();
-  require $root . '/components/error.html.php';
+  include_once $root . '/components/error.html.php';
   exit();
 }
 
 if ($result->rowCount() == 0) {
   $output = "Error no jokes found.";
-  require $root . '/components/error.html.php';
+  include_once $root . '/components/error.html.php';
   exit();
 }
 
@@ -32,7 +32,7 @@ while ($row = $result->fetch()) {
   );
 }
 
-require $root . "/components/index.html.php";
+include_once $root . "/components/index.html.php";
 
 exit();
 

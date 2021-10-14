@@ -33,7 +33,7 @@
 
     <?php
 
-    require $root . "/requires/helpers.php";
+    require $root . "/includes/helpers.inc.php";
 
     echo "<form action=\"?\" method=\"post\">";
     echo "<label for=\"id\">Select Category:</label>";

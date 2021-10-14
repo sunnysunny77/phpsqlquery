@@ -2,13 +2,13 @@
 
 $root = $_SERVER['DOCUMENT_ROOT'] . "/daniel";
 
-require $root . "/requires/db.inc.php";
+include_once $root . "/includes/db.inc.php";
 
 if (isset($_POST['action']) && $_POST['action'] == 'Show Category') {
 
   if ($_POST['id'] == '') {
     $output  = 'You must choose an category. Click &lsquo;back&rsquo; and try again.';
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
 
@@ -19,13 +19,13 @@ if (isset($_POST['action']) && $_POST['action'] == 'Show Category') {
     $result->execute();
   } catch (PDOException $e) {
     $output = 'Error fetching categories: ' . $e->getMessage();
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
 
   if ($result->rowCount() == 0) {
     $output = "Error no categories found.";
-    require $root . '/components/error.html.php';
+    include_once $root . '/components/error.html.php';
     exit();
   }
 
@@ -46,13 +46,13 @@ try {
   $result = $pdo->query($sql);
 } catch (PDOException $e) {
   $output = 'Error fetching categories: ' . $e->getMessage();
-  require $root . '/components/error.html.php';
+  include_once $root . '/components/error.html.php';
   exit();
 }
 
 if ($result->rowCount() == 0) {
   $output = "Error no categories found.";
-  require $root . '/components/error.html.php';
+  include_once $root . '/components/error.html.php';
   exit();
 }
 
@@ -63,7 +63,7 @@ while ($row = $result->fetch()) {
   );
 }
 
-require $root . "/components/show-category.html.php";
+include_once $root . "/components/show-category.html.php";
 
 exit();
 
