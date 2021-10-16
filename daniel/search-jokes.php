@@ -4,6 +4,8 @@ $root = $_SERVER['DOCUMENT_ROOT'] . "/daniel";
 
 include_once $root . "/includes/db.inc.php";
 
+$querry = "No results yet.";
+
 if (isset($_POST['action']) && $_POST['action'] == 'Search Jokes') {
 
   try {
